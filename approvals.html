@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px 30px;
+            background-color: #005197;
+            border-bottom: 0px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .header img {
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            background-color: #fff;
+        }
+
+        .sidebar {
+            background-color: #457bb9;
+            padding: 30px;
+            width: 200px;
+            box-shadow: inset -1px 0 0 0 #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #121212;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #005197;
+            color: black;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto; /* Adjusted margin to move table down */
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #D3E9FF; /* Light blue border for table */
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #D3E9FF; /* Light blue borders for cells */
+        }
+
+        table th {
+            background-color: #005197;
+            color: black;
+        }
+
+        table tr:hover {
+            background-color: #E9F3FF; /* Light blue highlight on hover */
+        }
+
+        /* Eye icon */
+        .view-icon {
+            cursor: pointer;
+            color: #337ab7;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="bit.png" alt="BIT Logo">
+        <h1>PLACEMENT RECORD PORTAL</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="admindashboard.html">Dashboard</a></li>
+                <li><a href="approvals.html" class="active">Approvals</a></li>
+                <li><a href="approved.html">Approved Reports</a></li>
+                <li><a href="login1.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <!-- Table -->
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Roll No</th>
+                  <th>Batch</th>
+                  <th>View</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dhakshitha</td>
+                  <td>7376221CS134</td>
+                  <td>2026</td>
+                  <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                </tr>
+                <tr>
+                  <td>Dhakshitha</td>
+                  <td>7376221CS134</td>
+                  <td>2026</td>
+                  <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                </tr>
+                <tr>
+                  <td>Dhakshitha</td>
+                  <td>7376221CS134</td>
+                  <td>2026</td>
+                  <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                </tr>
+                <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+                  <tr>
+                    <td>Dhakshitha</td>
+                    <td>7376221CS134</td>
+                    <td>2026</td>
+                    <td><span class="view-icon" onclick="viewDetails()">👁️</span></td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+      function viewDetails() {
+        // Redirect to another page when clicking the view icon
+        window.location.href = 'dummy.html';
+      }
+    </script>
+</body>
+</html>

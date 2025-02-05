@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Record Portal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px 30px;
+            background-color: #005197;
+            border-bottom: 0px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .header img {
+            width: 50px;
+            margin-right: 15px;
+            align-items: flex-start; /* Aligns the image at the top of the header */
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.5; /* Ensures the text is vertically centered */
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .sidebar {
+            background-color: #457bb9;
+            padding: 30px;
+            width: 250px;
+            box-shadow: inset -1px 0 0 0 #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #121212;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #005197;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #005197;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            min-width: 1200px; /* Ensures horizontal scroll for narrow screens */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #a7b7d3;
+        }
+
+        .reject-button {
+            background-color: #e71b1b;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .reject-button:hover {
+            background-color: #d04848;
+        }
+
+        .approve-button {
+            background-color: #22db1e;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .approve-button:hover {
+            background-color: #18cf188b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="bit.png" alt="BIT Logo">
+        <h1>PLACEMENT RECORD PORTAL</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a href="submissions.html" class="active">Submissions</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="table-container">
+            <table id="placementTable">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>ROLL NO</th>
+                        <th>GENDER</th>
+                        <th>EMAIL</th>
+                        <th>MOBILE NO</th>
+                        <th>DATE OF BIRTH</th>
+                        <th>DEGREE</th>
+                        <th>BRANCH</th>
+                        <th>BATCH</th>
+                        <th>NATIVE</th>
+                        <th>NO OF COMPANY PLACED</th>
+                        <th>COMPANY NAME 1</th>
+                        <th>COMPANY PLACED</th>
+                        <th>ORGANISER</th>
+                        <th>LOCATION</th>
+                        <th>JOINING DATE</th>
+                        <th>CTC(SALARY)</th>
+                        <th>MAIL CONFIRMATION</th>
+                        <th>INTERNSHIP LETTER</th>
+                        <th>LETTER OF INTENT</th>
+                        <th>OFFER LETTER</th>
+                        <th>JOINING DATE</th>
+                        <th>STIPEND AMOUNT</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <form action="submit_form.php" method="POST">
+                        <tr>
+                            <td><input type="text" name="Name" required></td>
+                            <td><input type="text" name="Rollno" required></td>
+                            <td><input type="text" name="Gender" required></td>
+                            <td><input type="email" name="Email" required></td>
+                            <td><input type="text" name="MobileNo" required></td>
+                            <td><input type="date" name="DOB" required></td>
+                            <td><input type="text" name="Degree" required></td>
+                            <td><input type="text" name="Branch" required></td>
+                            <td><input type="number" name="Batch" required></td>
+                            <td><input type="text" name="Native" required></td>
+                            <td><input type="number" name="NoOfCompanyPlaced" required></td>
+                            <td><input type="text" name="CompanyName1" required></td>
+                            <td><input type="text" name="CompanyPlaced" required></td>
+                            <td><input type="text" name="Organiser" required></td>
+                            <td><input type="text" name="Location" required></td>
+                            <td><input type="date" name="JoiningDate" required></td>
+                            <td><input type="number" step="0.01" name="CTC" required></td>
+                            <td><input type="text" name="MailConfirmation" required></td>
+                            <td><input type="text" name="InternshipLetter" required></td>
+                            <td><input type="text" name="LetterOfIntent" required></td>
+                            <td><input type="text" name="OfferLetter" required></td>
+                            <td><input type="number" name="StipendAmount" required></td>
+                            <td><button type="submit" class="submit-button">Submit</button></td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Record Portal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px 30px;
+            background-color: #005197;
+            border-bottom: 0px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .header img {
+            width: 50px;
+            margin-right: 15px;
+            align-items: flex-start; /* Aligns the image at the top of the header */
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.5; /* Ensures the text is vertically centered */
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            background-color: white;
+        }
+
+        .sidebar {
+            background-color: #457bb9;
+            padding: 30px;
+            width: 210px;
+            box-shadow: inset -1px 0 0 0 #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #005197;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #005197;
+        }
+
+        .searchbar {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 70px; /* Adjust as needed */
+            left: 250px; /* Adjust to match the sidebar width */
+            right: 80px; /* Adjust to make space for the download button */
+            background-color: #fff;
+            padding: 10px;
+            z-index: 1000;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+
+        .searchbar input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .download-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it's on top of other elements */
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+        }
+
+        .table-container {
+            margin-top: 130px; /* Adjust to create space for the fixed search bar */
+            overflow-x: auto;
+            width: calc(100% - 247px); /* Adjust based on sidebar width */
+            padding: 20px;
+        }
+
+        .logout-btn {
+            margin-top: auto;
+            text-align: center;
+            background-color: #ff4d4d;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #ff1a1a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            min-width: 1200px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #a7b7d3;
+        }
+
+        .reject-button {
+            background-color: #e71b1b;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .reject-button:hover {
+            background-color: #d04848;
+        }
+
+        .approve-button {
+            background-color: #22db1e;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 2px 1px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .approve-button:hover {
+            background-color: #18cf188b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="bit.png" alt="BIT Logo">
+        <h1>PLACEMENT RECORD PORTAL</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="admindashboard.html">Dashboard</a></li>
+                <li><a href="approvals.html">Approvals</a></li>
+                <li><a href="approved.html" class="active">Approved Reports</a></li>
+                <li><a href="login1.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="table-container">
+            <div class="searchbar">
+                <input type="text" placeholder="Search">
+                <button class="download-btn" id="downloadBtn">DOWNLOAD</button>
+            </div>
+            <table id="placementTable">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>ROLL NO</th>
+                        <th>GENDER</th>
+                        <th>EMAIL</th>
+                        <th>MOBILE NO</th>
+                        <th>DATE OF BIRTH</th>
+                        <th>DEGREE</th>
+                        <th>BRANCH</th>
+                        <th>BATCH</th>
+                        <th>NATIVE</th>
+                        <th>NO OF COMPANY PLACED</th>
+                        <th>COMPANY NAME 1</th>
+                        <th>COMPANY PLACED</th>
+                        <th>ORGANISER</th>
+                        <th>LOCATION</th>
+                        <th>JOINING DATE</th>
+                        <th>CTC(SALARY)</th>
+                        <th>MAIL CONFIRMATION</th>
+                        <th>INTERNSHIP LETTER</th>
+                        <th>LETTER OF INTENT</th>
+                        <th>OFFER LETTER</th>
+                        <th>JOINING DATE</th>
+                        <th>STIPEND AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Divya S</td>
+                        <td>773021CSE05</td>
+                        <td>FEMALE</td>
+                        <td>divya@email.com</td>
+                        <td>8698524510</td>
+                        <td>05-09-2005</td>
+                        <td>BE</td>
+                        <td>CS</td>
+                        <td>2026</td>
+                        <td>Tiruppur</td>
+                        <td>2</td>
+                        <td>Zomato</td>
+                        <td>IT PRODUCT</td>
+                        <td>TRAINING AND PLACEMENT</td>
+                        <td>CHENNAI</td>
+                        <td>20-01-2025</td>
+                        <td>7.5 LPA</td>
+                        <td>PDF</td>
+                        <td>PDF</td>
+                        <td>PDF</td>
+                        <td>YES</td>
+                        <td>25-09-2024</td>
+                        <td>12000</td>
+                    </tr>
+        
+                    <tr>
+                        <td>Dhakshi S</td>
+                        <td>773021CS134</td>
+                        <td>FEMALE</td>
+                        <td>Dhakshi@email.com</td>
+                        <td>8698524510</td>
+                        <td>05-09-2005</td>
+                        <td>BE</td>
+                        <td>CS</td>
+                        <td>2026</td>
+                        <td>Tiruppur</td>
+                        <td>2</td>
+                        <td>Zomato</td>
+                        <td>IT PRODUCT</td>
+                        <td>TRAINING AND PLACEMENT</td>
+                        <td>CHENNAI</td>
+                        <td>20-01-2025</td>
+                        <td>9.5 LPA</td>
+                        <td>PDF</td>
+                        <td>PDF</td>
+                        <td>PDF</td>
+                        <td>YES</td>
+                        <td>25-09-2024</td>
+                        <td>15000</td>
+                    </tr>
+        
+                    <!-- Repeat rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            let csv = [];
+            const rows = document.querySelectorAll("#placementTable tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = [];
+                const cols = rows[i].querySelectorAll("td, th");
+                for (let j = 0; j < cols.length; j++) {
+                    row.push(cols[j].innerText);
+                }
+                csv.push(row.join(","));
+            }
+
+            // Create a downloadable CSV file
+            let csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+            let downloadLink = document.createElement("a");
+            downloadLink.download = "placement_records.csv";
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
+    </script>
+</body>
+</html>

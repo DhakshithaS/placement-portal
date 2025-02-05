@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Record Portal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px 30px;
+            background-color: #005197;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .header img {
+            width: 50px;
+            margin-right: 15px;
+            align-items: flex-start;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.5;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .sidebar {
+            background-color: #457bb9;
+            padding: 30px;
+            width: 200px;
+            box-shadow: inset -1px 0 0 0 #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #003d70;
+            color: black;
+        }
+
+        .sidebar ul li a.active {
+            background-color: #003d70;
+            color: black;
+        }
+
+        .table-container {
+            flex: 1;
+            padding: 50px;
+            margin: 30px;
+            background-color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #cce7ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #cce7ff;
+        }
+
+        th {
+            background-color: white;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .approve-button, .reject-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+
+        .approve-button {
+            background-color: #28a745;
+        }
+
+        .approve-button:hover {
+            background-color: #218838;
+        }
+
+        .reject-button {
+            background-color: #dc3545;
+        }
+
+        .reject-button:hover {
+            background-color: #c82333;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal textarea {
+            width: 100%;
+            padding: 20px 2px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .modal .submit-button {
+            background-color: #0aea0e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .modal .submit-button:hover {
+            background-color: #66f066a4;
+        }
+
+        .modal .cancel-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .modal .cancel-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="bit.png" alt="BIT Logo">
+        <h1>PLACEMENT RECORD PORTAL</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="admindashboard.html">Dashboard</a></li>
+                <li><a href="approvals.html" class="active">Approvals</a></li>
+                <li><a href="approved.html">Approved Reports</a></li>
+                <li><a href="login1.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Company Placed</th>
+                    <td>ZOHO (IT Product)</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>Chennai</td>
+                </tr>
+                <tr>
+                    <th>Organizer</th>
+                    <td>Training and Placement</td>
+                </tr>
+                <tr>
+                    <th>Joining Date</th>
+                    <td>31.08.2024</td>
+                </tr>
+                <tr>
+                    <th>CTC (Salary)</th>
+                    <td>90,000</td>
+                </tr>
+                <tr>
+                    <th>Mail Confirmation</th>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <th>Offer Letter/Internship Letter</th>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <th>Stipend Amount</th>
+                    <td>No</td>
+                </tr>
+            </table>
+
+            <div class="action-buttons">
+                <button class="approve-button">Approve</button>
+                <button class="reject-button">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="rejectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Remarks</h2>
+            <textarea placeholder="Enter your remarks here..." rows="5"></textarea>
+            <button class="submit-button">Submit</button>
+            <button class="cancel-button">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("rejectModal");
+        var btn = document.querySelector(".reject-button");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.querySelector('.submit-button').addEventListener('click', function () {
+            alert('Remarks submitted!');
+            modal.style.display = "none";
+        });
+    </script>
+</body>
+</html>

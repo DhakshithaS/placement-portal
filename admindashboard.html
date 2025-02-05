@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Record Portal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px 30px;
+            background-color: #005197;
+            border-bottom: 0px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .header img {
+            width: 50px;
+            margin-right: 15px;
+            align-items: flex-start; /* Aligns the image at the top of the header */
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.5; /* Ensures the text is vertically centered */
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .sidebar {
+            background-color: #457bb9;
+            padding: 30px;
+            width: 200px;
+            box-shadow: inset -1px 0 0 0 #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .sidebar img {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: #003d70;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .welcome {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        .chart-box {
+            width: 50%;
+            /* background-color: #f0f0f0; */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border: 2px solid #cce7ff;
+        }
+
+        .chart-box1 {
+            width: 25%;
+            /* background-color: #f0f0f0; */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border: 2px solid #cce7ff;
+        }
+
+        .chart {
+            width: 100%;
+        }
+
+        .chart1 {
+            width: 100%;
+        }
+
+        .salary-info {
+            margin-top: 50px;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .salary-info div {
+            /* background-color: #f8f8f8; */
+            padding: 50px;
+            margin-right: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 30%;
+            text-align: center;
+            border: 2px solid #cce7ff;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <img src="bit.png" alt="BIT Logo">
+        <h1>PLACEMENT RECORD PORTAL</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="admindashboard.html" class="active">Dashboard</a></li>
+                <li><a href="approvals.html">Approvals</a></li>
+                <li><a href="approved.html">Approved Reports</a></li>
+                <li><a href="login1.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="welcome">Welcome Back,</div>
+            <div class="chart-container">
+                <div class="chart-box">
+                    <div class="chart">
+                        <!-- Bar chart -->
+                        <canvas id="barchart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box1">
+                    <div class="chart1">
+                        <!-- Doughnut chart -->
+                        <canvas id="doughnut"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="salary-info">
+                <div id="max-salary">
+                    <strong>Maximum Salary:</strong> ₹10,00,000
+                </div>
+                <div id="min-salary">
+                    <strong>Minimum Salary:</strong> ₹2,00,000
+                </div>
+                <div id="avg-salary">
+                    <strong>Average Salary:</strong> ₹5,00,000
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Bar chart
+        const ctx = document.getElementById('barchart').getContext('2d');
+        const barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2-3LPA', '4-5LPA', '5-6LPA', '6-7LPA', '8-9LPA', '9 ABOVE'],
+                datasets: [{
+                    label: 'Students placed',
+                    data: [550, 250, 55, 27, 15, 10],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Doughnut chart
+        const ctx2 = document.getElementById('doughnut').getContext('2d');
+        const doughnut = new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Not placed', 'Placed', 'Not interested'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [120, 1250, 300],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
